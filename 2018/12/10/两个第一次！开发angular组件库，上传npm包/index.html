@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>两个第一次！ | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="事情的开始是这样的应业务需求做一个可以放在angular的表单里使用的富文本编辑器。为了方便同步给其他项目组，故而决定传个npm包。这也是我的首个有使用价值的开源项目。 开始选了个star多，不需其他依赖的开源项目进行二次封装。感谢原作者。   https://github.com/wangfupeng1988/wangEditor AngularCLI v6集成了ng-packagr，提供了整套">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两个第一次！">
+<meta property="og:url" content="http://yoursite.com/2018/12/10/两个第一次！开发angular组件库，上传npm包/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="事情的开始是这样的应业务需求做一个可以放在angular的表单里使用的富文本编辑器。为了方便同步给其他项目组，故而决定传个npm包。这也是我的首个有使用价值的开源项目。 开始选了个star多，不需其他依赖的开源项目进行二次封装。感谢原作者。   https://github.com/wangfupeng1988/wangEditor AngularCLI v6集成了ng-packagr，提供了整套">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/12/10/两个第一次！开发angular组件库，上传npm包/img/packages.jpg">
+<meta property="og:updated_time" content="2018-12-10T15:17:39.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="两个第一次！">
+<meta name="twitter:description" content="事情的开始是这样的应业务需求做一个可以放在angular的表单里使用的富文本编辑器。为了方便同步给其他项目组，故而决定传个npm包。这也是我的首个有使用价值的开源项目。 开始选了个star多，不需其他依赖的开源项目进行二次封装。感谢原作者。   https://github.com/wangfupeng1988/wangEditor AngularCLI v6集成了ng-packagr，提供了整套">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/10/两个第一次！开发angular组件库，上传npm包/img/packages.jpg">
+  
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+</html>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Clover Tuan</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://dribbble.com/clovertuan" target="_blank" class="nav-icn iconfont icon-dribbble"></a>
+          
+        
+          
+            <a href="https://www.behance.net/clovertuan" target="_blank" class="nav-icn iconfont icon-behance"></a>
+          
+        
+          
+            <a href="http://clovertuan.lofter.com/" target="_blank" class="nav-icn iconfont icon-lofter"></a>
+          
+        
+          
+            <a href="https://www.instagram.com/clovertuan/" target="_blank" class="nav-icn iconfont icon-instagram"></a>
+          
+        
+          
+            <a href="https://github.com/cloverTuan" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article">
+  <h2 class="title">两个第一次！</h2>
+  <p class="sub">Dec 10, 2018</p>
+  <article class="content">
+    <h2 id="事情的开始是这样的"><a href="#事情的开始是这样的" class="headerlink" title="事情的开始是这样的"></a>事情的开始是这样的</h2><p>应业务需求做一个可以放在angular的表单里使用的富文本编辑器。为了方便同步给其他项目组，故而决定传个npm包。这也是我的首个有使用价值的开源项目。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>选了个star多，不需其他依赖的开源项目进行二次封装。感谢原作者。  </p>
+<p><a href="https://github.com/wangfupeng1988/wangEditor" target="_blank" rel="noopener">https://github.com/wangfupeng1988/wangEditor</a></p>
+<p>AngularCLI v6集成了ng-packagr，提供了整套制作第三方组件的方案。<br>现学现卖，参考这个文章：  </p>
+<p><a href="https://blog.angularindepth.com/creating-a-library-in-angular-6-87799552e7e5" target="_blank" rel="noopener">https://blog.angularindepth.com/creating-a-library-in-angular-6-87799552e7e5</a></p>
+<p><a href="https://blog.angularindepth.com" target="_blank" rel="noopener">angularindepth</a>真是个好平台!</p>
+<p>遇到的问题：</p>
+<ol>
+<li>头个问题就是纯傻，依赖的wangeditor没能自动install。我以为在angular项目里添加依赖包就可以了，实则不然，应该在project里进行安装（记得设置.gitignore）。</li>
+<li><p>试图配置到peerDependencies里面，依然没能自动install，查资料应该是npm2与npm3对peerDependencies的实现是有差异的，描述如下：<br> <a href="http://link.zhihu.com/?target=https%3A//github.com/npm/npm/issues/6565" target="_blank" rel="noopener">http://link.zhihu.com/?target=https%3A//github.com/npm/npm/issues/6565</a><br> 这里给的方案是按提示手动npm install，然而洒家并不能认同这种结果。<br> 遇事不决问大哥：<br> <a href="https://www.zhihu.com/people/sangka/activities" target="_blank" rel="noopener">https://www.zhihu.com/people/sangka/activities</a></p>
+</li>
+<li><p>还是要放在dependencies里。又报错，什么什么wangeditor不在白名单……<br> <a href="https://stackoverflow。com/questions/51216616/what-is-the-proper-way-to-use-a-dependent-npm-package-in-angular-6-library-proje" target="_blank" rel="noopener">https://stackoverflow。com/questions/51216616/what-is-the-proper-way-to-use-a-dependent-npm-package-in-angular-6-library-proje</a><br> ​<br> ng-package.json里配置whitelistedNonPeerDependencies，好用了。</p>
+</li>
+</ol>
+<p>剩下的一个问题就是如何布置针对组件库的css，首先我不想每个组件都手动引入，其次不希望暴漏给整个项目，以免冲突，待后续调查~</p>
+<p>ps：我原本打算在组件里处理回压，几经思考觉得这种事还是放在业务里比较合适</p>
+
+  </article>
+  <footer class="f-cf">
+    
+      <a href="/2018/12/10/恼人的样式重构/" class="link f-fl">⟵恼人的样式重构</a>
+    
+    
+      <a href="/2018/10/01/开博/" class="link f-fr">开博⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  d.guangying@foxmail.com
+  
+    
+      
+        · <a href="https://dribbble.com/clovertuan" target="_blank" class="nav-icn">Dribbble</a>
+      
+    
+      
+        · <a href="https://www.behance.net/clovertuan" target="_blank" class="nav-icn">Behance</a>
+      
+    
+      
+        · <a href="http://clovertuan.lofter.com/" target="_blank" class="nav-icn">Lofter</a>
+      
+    
+      
+        · <a href="https://www.instagram.com/clovertuan/" target="_blank" class="nav-icn">Instagram</a>
+      
+    
+      
+        · <a href="https://github.com/cloverTuan" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Clover Tuan</span>
+</footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>恼人的样式重构 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="事情的开始是这样的项目要重构UI，然而老孟的css功力很浅很浅，对sass更是一知半解。学习机会来了~~   情况不妙原项目是用ionic搞得，框架本身提供了茫茫多的sass变量提供给开发者进行自定义主题，长下面这样：    梳理了一下老代码发现事情没那么简单，主要问题如下：  原开发者丝毫不理会官方方案，所有主题相关的样式均使用高权重选择器强硬覆盖。 所有主题样式全挤在app.scss一个文件里">
+<meta property="og:type" content="article">
+<meta property="og:title" content="恼人的样式重构">
+<meta property="og:url" content="http://yoursite.com/2018/12/10/恼人的样式重构/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="事情的开始是这样的项目要重构UI，然而老孟的css功力很浅很浅，对sass更是一知半解。学习机会来了~~   情况不妙原项目是用ionic搞得，框架本身提供了茫茫多的sass变量提供给开发者进行自定义主题，长下面这样：    梳理了一下老代码发现事情没那么简单，主要问题如下：  原开发者丝毫不理会官方方案，所有主题相关的样式均使用高权重选择器强硬覆盖。 所有主题样式全挤在app.scss一个文件里">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/12/10/恼人的样式重构/img/zaqiang.jpg">
+<meta property="og:updated_time" content="2018-12-10T15:17:39.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="恼人的样式重构">
+<meta name="twitter:description" content="事情的开始是这样的项目要重构UI，然而老孟的css功力很浅很浅，对sass更是一知半解。学习机会来了~~   情况不妙原项目是用ionic搞得，框架本身提供了茫茫多的sass变量提供给开发者进行自定义主题，长下面这样：    梳理了一下老代码发现事情没那么简单，主要问题如下：  原开发者丝毫不理会官方方案，所有主题相关的样式均使用高权重选择器强硬覆盖。 所有主题样式全挤在app.scss一个文件里">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/10/恼人的样式重构/img/zaqiang.jpg">
+  
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+</html>
+<body style="
+
+
+  background-color: #eff0f6
+
+">
+  <div id="container">
+    <nav id="nav">
+  <header class="header">
+    <a href="/" class="title">Clover Tuan</a>
+  </header>
+  <div class="ctnWrap">
+    <div class="icons">
+      
+        
+          
+            <a href="https://dribbble.com/clovertuan" target="_blank" class="nav-icn iconfont icon-dribbble"></a>
+          
+        
+          
+            <a href="https://www.behance.net/clovertuan" target="_blank" class="nav-icn iconfont icon-behance"></a>
+          
+        
+          
+            <a href="http://clovertuan.lofter.com/" target="_blank" class="nav-icn iconfont icon-lofter"></a>
+          
+        
+          
+            <a href="https://www.instagram.com/clovertuan/" target="_blank" class="nav-icn iconfont icon-instagram"></a>
+          
+        
+          
+            <a href="https://github.com/cloverTuan" target="_blank" class="nav-icn iconfont icon-github"></a>
+          
+        
+      
+    </div>
+    <div class="menu">
+      
+        
+            <a href="/" class="nav-menu ">HOME</a>
+          
+        
+            <a href="/archives" class="nav-menu ">ARCHIVE</a>
+          
+        
+            <a href="/about" class="nav-menu ">ABOUT</a>
+          
+        
+      
+    </div>
+  </div>
+</nav>
+    <div id="main"><section class="article">
+  <h2 class="title">恼人的样式重构</h2>
+  <p class="sub">Dec 10, 2018</p>
+  <article class="content">
+    <h2 id="事情的开始是这样的"><a href="#事情的开始是这样的" class="headerlink" title="事情的开始是这样的"></a>事情的开始是这样的</h2><p>项目要重构UI，然而老孟的css功力很浅很浅，对sass更是一知半解。学习机会来了~~  </p>
+<h2 id="情况不妙"><a href="#情况不妙" class="headerlink" title="情况不妙"></a>情况不妙</h2><p>原项目是用ionic搞得，框架本身提供了茫茫多的sass变量提供给开发者进行自定义主题，长下面这样：  </p>
+<p><img src="/img/ionicsass.png" alt="ionic"></p>
+<p>梳理了一下老代码发现事情没那么简单，主要问题如下：</p>
+<ol>
+<li>原开发者丝毫不理会官方方案，所有主题相关的样式均使用高权重选择器强硬覆盖。</li>
+<li>所有主题样式全挤在app.scss一个文件里。</li>
+<li>pages各玩各的，缺乏通用样式，冗余代码太多。</li>
+<li>老员工们并不怎么会ng，没有拥抱组件化，通用组件~~零  </li>
+</ol>
+<p><img src="/img/dark.jpg" alt=""></p>
+<h2 id="规范的推进势在必行……"><a href="#规范的推进势在必行……" class="headerlink" title="规范的推进势在必行……"></a>规范的推进势在必行……</h2><p>出于上述问题，修改官方提供的改变量方式可以扔一边了~~我的方案如下：</p>
+<ol>
+<li>少覆盖多扩展，绕开问题1的坑。</li>
+<li>制定规范防止问题2，问题3恶化。</li>
+<li>至于问题4，放弃吧。想解决这个问题需要对其他员工进行培训，成本太高。介于公司性质和洒家的江湖地位，这事儿别想了。  </li>
+</ol>
+<h2 id="关于方案1"><a href="#关于方案1" class="headerlink" title="关于方案1"></a>关于方案1</h2><p>其实方案1并不合理，但我一己之力难以改变其他组员的错误使用方式，这是一种将错就错的妥协。关于此事儿我一句也不想提。</p>
+<h2 id="关于方案2"><a href="#关于方案2" class="headerlink" title="关于方案2"></a>关于方案2</h2><p>所谓难者不会，会者不难。对不起，我是难者。（；´д｀）ゞ<br>全写在app.scss显然不靠谱。老孟坚信好的项目是结构美丽的。<br>谷歌一下如何布置sass的结构，推荐下面这篇影响力较大的文章，其他优秀文章不一一列举了。  </p>
+<p><a href="https://www.sitepoint.com/architecture-sass-project" target="_blank" rel="noopener">https://www.sitepoint.com/architecture-sass-project</a>  </p>
+<p>说得很细，由于ng本身的组件化特性，就没必要搞得像文中那么复杂了。暂定结构如下：</p>
+<p>main.scss单纯作为入口，引入所有文件，被根部引入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Modules and Variables </span><br><span class="line">@import &apos;./modules/_all.scss&apos;;</span><br><span class="line">//Base</span><br><span class="line">@import &quot;./base/_layout.scss&quot;; </span><br><span class="line">//Cover</span><br><span class="line">@import &quot;./cover/footer&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>解释一下：</strong>  </p>
+<ul>
+<li><p>modules文件夹放变量和函数们，简化写法，易于迭代。  </p>
+</li>
+<li><p>base文件夹存放通用的碎片样式。比如居中之类的非业务性的写法。  </p>
+</li>
+<li><p>cover是对ionic提供的组件的覆盖与扩展。其实叫components更合适，但angular对component的‘私有’样式另有写法，结合目前的状况（看问题一），干脆叫cover了。</p>
+</li>
+</ul>
+<p>剩下的工作就是往上搬砖了。  </p>
+<p><strong>做个总结吧:</strong>  </p>
+<p>纯主观看法：</p>
+<ul>
+<li>不做一票儿买卖,写一步想两步，考虑日后的迭代和扩展。</li>
+<li>适度抽象，sass有变量和各种继承写法，纯css可以用属性和类名控制（我对此也没啥经验，说这话有点虚）。</li>
+<li>业务是业务，组件是组件，框架是框架。分开管理别抱团。</li>
+<li>勤看官网少吃亏！经验主义不可取。</li>
+</ul>
+<p>硬广结尾：</p>
+<p><a href="http://www.xmtwenshen.com" target="_blank" rel="noopener">大连玄铭堂</a></p>
+<p>这个官网不是我做的…</p>
+
+  </article>
+  <footer class="f-cf">
+    
+    
+      <a href="/2018/12/10/两个第一次！开发angular组件库，上传npm包/" class="link f-fr">两个第一次！⟶</a>
+    
+  </footer>
+</section></div>
+    <footer id="footer" class="f-cf">
+  d.guangying@foxmail.com
+  
+    
+      
+        · <a href="https://dribbble.com/clovertuan" target="_blank" class="nav-icn">Dribbble</a>
+      
+    
+      
+        · <a href="https://www.behance.net/clovertuan" target="_blank" class="nav-icn">Behance</a>
+      
+    
+      
+        · <a href="http://clovertuan.lofter.com/" target="_blank" class="nav-icn">Lofter</a>
+      
+    
+      
+        · <a href="https://www.instagram.com/clovertuan/" target="_blank" class="nav-icn">Instagram</a>
+      
+    
+      
+        · <a href="https://github.com/cloverTuan" target="_blank" class="nav-icn">GitHub</a>
+      
+    
+  
+  <span class="copyright">All rights reserved @Clover Tuan</span>
+</footer>
+  </div>
+</body>
+</html>
