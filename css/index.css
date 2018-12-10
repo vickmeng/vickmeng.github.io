@@ -357,3 +357,15 @@ body {
   .tagcloud > a {
     display: inline-block;
     padding: 10px; }
+
+.content img {
+  display: block;
+  margin: 0 auto; }
+
+.project-card .imgWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white; }
+  .project-card .imgWrap img {
+    height: auto; }
