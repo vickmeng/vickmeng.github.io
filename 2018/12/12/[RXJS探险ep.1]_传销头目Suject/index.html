@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!--Description-->
+  
+
+  <!--Author-->
+  
+  <meta name="author" content="John Doe">
+  
+
+  <!--Open Graph Title-->
+  
+      <meta property="og:title" content="[RXJS探险ep.1]_传销头目Suject">
+  
+  <!--Open Graph Description-->
+  
+  <!--Open Graph Site Name-->
+  <meta property="og:site_name" content="Hexo">
+  <!--Type page-->
+  
+      <meta property="og:type" content="article">
+  
+  <!--Page Cover-->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Title -->
+  
+  <title>[RXJS探险ep.1]_传销头目Suject - Hexo</title>
+
+
+  <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
+
+  <!-- Custom CSS/Sass -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!----------------------------
+  https://github.com/GallenHu/hexo-theme-Daily
+
+ _____            _   _
+|  __ \          (_) | |
+| |  | |   __ _   _  | |  _   _
+| |  | |  / _` | | | | | | | | |
+| |__| | | (_| | | | | | | |_| |
+|_____/   \__,_| |_| |_|  \__, |
+                          __/ |
+                         |___/
+
+    --------------------------->
+
+</head>
+
+
+<body>
+
+  <!-- Nav -->
+  <header class="site-header">
+  <div class="header-inside">
+    <div class="logo">
+      <a href="/" rel="home">
+        
+        <img src="./img/lm.png" alt="Hexo" height="60">
+        
+      </a>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse">
+        <ul class="navbar-nav">
+          
+          
+            <li>
+              <a href="/.">
+                
+                  home
+                
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives">
+                
+                  archive
+                
+              </a>
+            </li>
+          
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </nav>
+    <div class="button-wrap">
+      <button class="menu-toggle">Primary Menu</button>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Main Content -->
+  <div class="content-area">
+  <div class="post">
+    <!-- Post Content -->
+    <div class="container">
+      <article>
+        <!-- Title date & tags -->
+        <div class="post-header">
+          <h1 class="entry-title">
+            [RXJS探险ep.1]_传销头目Suject
+            
+          </h1>
+          <p class="posted-on">
+          2018-12-12
+          </p>
+          <div class="tags-links">
+            
+              
+                <a href="/tags/凭什么不让用？/" rel="tag">
+                  凭什么不让用？
+                </a>
+              
+            
+          </div>
+        </div>
+        <!-- Post Main Content -->
+        <div class="entry-content has_line_number">
+          <p>老孟对Subject的理解有误，而且这个错误是共性的，此篇记录探险过程。</p>
+<h2 id="开局一张图"><a href="#开局一张图" class="headerlink" title="开局一张图"></a>开局一张图</h2><p><img src="/img/subject.png" alt=""></p>
+<p><a href="https://github.com/RxJS-CN/rxjs-articles-translation/blob/master/articles/Subjects-For-Human-Beings.md" target="_blank" rel="noopener">上图出处中</a>如此描述Subject：</p>
+<blockquote>
+<p>Subject is both an Observable and Observer </p>
+</blockquote>
+<p>依老孟看Subject跟搞传销的差不多：<strong><em>既接收上游发的货（数据），又把货发给一众下游。</em></strong></p>
+<p>那我为什么还要辛苦new Observable对象？全用Subject不就成了？就像下面这样多舒服：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> subject = <span class="keyword">new</span> Subject();</span><br><span class="line">button.addEventListener(<span class="string">'click'</span>, () =&gt; subject.next(<span class="string">'click'</span>));</span><br><span class="line">subject.subscribe(<span class="function"><span class="params">x</span> =&gt;</span> <span class="built_in">console</span>.log(x));</span><br></pre></td></tr></table></figure>
+<h2 id="开搞"><a href="#开搞" class="headerlink" title="开搞"></a>开搞</h2><p>  ……</p>
+<p>  ……</p>
+<p>好吧…老孟选择直接 “大哥一下” ，联系到了<a href="https://www.zhihu.com/people/sangka/posts" target="_blank" rel="noopener">Rxjs中文社区的发起者</a>：<br><img src="/img/wx.png" alt=""></p>
+<p>大哥永远会把你的问题变成更多问题:</p>
+<ol>
+<li>为啥少用Subject？</li>
+<li>asObservable是个啥？</li>
+</ol>
+<h2 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h2><p>开篇文章结尾处对Suject的使用场景有明确的介绍：</p>
+<blockquote>
+<h2 id="When-to-use-Subject"><a href="#When-to-use-Subject" class="headerlink" title="When to use Subject"></a>When to use Subject</h2><p>You need to share the same observable execution.<br>When you need to decide what to do when an observer arrives late, do we use ReplaySubject, BehaviorSubject?<br>You need full control over the next(), error() and complete() methods.</p>
+</blockquote>
+<p>Subject是为多播而存在的，我的用法的确不对，但这并没有解决我的问题，在<a href="https://github.com/RxJS-CN" target="_blank" rel="noopener">中文社区</a>,找到了另一篇文章:<a href="https://github.com/RxJS-CN/rxjs-articles-translation/blob/master/articles/On-The-Subject-Of-Subjects.md" target="_blank" rel="noopener">[译]关于 RxJS 中的 Subject</a>。</p>
+<p>文章开头就提到了我的问题，感谢译者……哦，还是大哥…..</p>
+<blockquote>
+<p>…….很有帮助，但这不是以 “Rx 的方式”在处理问题。理想的是在 Observable 中包装事件注册，既可以监听事件，又可以取消事件监听。看起来像这样:</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> clicks = <span class="keyword">new</span> Observable(<span class="function"><span class="params">observer</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> handler = <span class="function">(<span class="params">e</span>) =&gt;</span> observer.next(e);</span><br><span class="line">  button.addEventListener(<span class="string">'click'</span>, handler);</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> button.removeEventListener(<span class="string">'click'</span>, handler);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>风格原因？这不足以让老孟抛弃Subject,主要所有逻辑是全挤在new Observable的参数里太难写了。我需要更充分的理由~~</p>
+<p><a href="https://www.zhihu.com/people/sangka/posts" target="_blank" rel="noopener">大哥一下：</a><br><img src="/img/wx2.png" alt=""></p>
+<p>直觉告诉老孟，Subject带来的麻烦可能和<strong><em>不可重用</em></strong>这个特征有关系，unsubscribe之类的balabalabala……老孟现在不想深究，以后有机会再研究。</p>
+<p>so that，我们的第一个问题变成了<strong><em>如何用O代替S</em></strong>（ps： 虽然egghead搞圣诞节打折，但年费也要十张毛爷爷，md这年头没钱想搬砖都搬不起）</p>
+
+        </div>
+      </article>
+    </div>
+    <!-- Comments -->
+    <div class="container">
+      
+<section id="comment">
+  <!-- <h1 class="title">Comments</h1> -->
+
+  
+</section>
+
+
+    </div>
+    <!-- Pre or Next -->
+    <div class="nav-links">
+      
+      
+        <div class="nav-next">
+          <a href="/2018/12/10/恼人的样式重构/" rel="prev">Newer Posts <span class="meta-arraw meta-arraw-right"></span></a>
+        </div>
+      
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Footer -->
+  <!-- Footer-widgets -->
+<div class="footer-widgets">
+  <div class="row inside-wrapper">
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">相关</h1>
+        <div class="custom-widget-content">
+          
+          <ul><li><a href="https://github.com/RxJS-CN">RxJS 中文社区</a></li><li><a href="https://github.com/vickmeng/ng-vk-charts">数据可视化ng-vk-charts</a></li></ul>
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">Contact</h1>
+        <div class="widget-text">
+          
+            
+              <a href="https://github.com/vickmeng" class="icon icon-github" target="_blank">github</a>
+            
+          
+        </div>
+      </aside>
+    </div>
+    <div class="col-1-3">
+      <aside>
+        <h1 class="widget-title">Search</h1>
+        <div class="widget-text">
+          <form onsubmit="return appDaily.submitSearch('')">
+            <p>
+              <input type="text" placeholder="search..." id="homeSearchInput">
+            </p>
+            <!-- <input type="submit" value="GO"> -->
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<footer class="site-info">
+  <p>
+    <span>Hexo &copy; 2018</span>
+    
+      <span class="split">|</span>
+      <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> with Theme <a href="https://github.com/GallenHu/hexo-theme-Daily" target="_blank">Daily</a></span>
+    
+  </p>
+</footer>
+
+
+  <!-- After footer scripts -->
+  <!-- scripts -->
+<script src="/js/app.js"></script>
+
+
+
+
+
+</body>
+
+</html>
